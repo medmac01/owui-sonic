@@ -33,7 +33,7 @@ services:
     environment:
       - 'OLLAMA_BASE_URL=http://ollama:11434'
       - 'SONIC_HUNTING_API=https://b90a-196-200-180-30.ngrok-free.app'
-      - 'SONIC_HUNTING_KEY=42af1c549bd22daaa542ef9436903260b472c370'
+      - 'SONIC_HUNTING_KEY=ebece6d16deb97a6f28d6b3feca632f95551f475'
       - 'PIPELINES_URLS=https://raw.githubusercontent.com/medmac01/owui-sonic/refs/heads/main/pipelines/examples/pipelines/integrations/sonic_pipeline.py'
     extra_hosts:
       - host.docker.internal:host-gateway
