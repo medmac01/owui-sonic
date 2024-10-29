@@ -5,16 +5,17 @@ services:
       args:
         OLLAMA_BASE_URL: '/ollama'
       dockerfile: Dockerfile
-    # image: ghcr.io/open-webui/open-webui:${WEBUI_DOCKER_TAG-main}
+    image: ghcr.io/open-webui/open-webui:${WEBUI_DOCKER_TAG-main}
     container_name: open-webui
     volumes:
       - open-webui:/app/backend/data
     ports:
       - ${OPEN_WEBUI_PORT-3000}:8080
     environment:
-      - 'OLLAMA_BASE_URL=http://ollama:11434'
+      - 'OLLAMA_BASE_URL=https://e4ec-196-200-180-30.ngrok-free.app'
       - 'OPENAI_API_BASE_URL=http://host.docker.internal:9099'
       - 'OPENAI_API_KEY=0p3n-w3bu!'
+      - 'WEBUI_NAME=Sonic Threat Hunting Assistant'
       - 'WEBUI_SECRET_KEY='
     extra_hosts:
       - host.docker.internal:host-gateway
@@ -31,7 +32,9 @@ services:
       - 9099:9099
     environment:
       - 'OLLAMA_BASE_URL=http://ollama:11434'
-      # - 'PIPELINES_URLS='
+      - 'SONIC_HUNTING_API=https://b90a-196-200-180-30.ngrok-free.app'
+      - 'SONIC_HUNTING_KEY=42af1c549bd22daaa542ef9436903260b472c370'
+      - 'PIPELINES_URLS=examples/pipelines/integrations/sonic_pipeline.py'
     extra_hosts:
       - host.docker.internal:host-gateway
     restart: always

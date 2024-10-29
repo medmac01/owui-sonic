@@ -2,6 +2,7 @@ from typing import List, Union, Generator, Iterator
 from schemas import OpenAIChatMessage
 import subprocess
 import requests
+import os
 
 class Pipeline:
     def __init__(self):
@@ -24,10 +25,10 @@ class Pipeline:
         pass
 
     def invoke_agents(self, input:str):
-        base_url = "threat_hunt_agents_api-sonic_ai-1:3333/api/answer_v2/"
+        base_url = os.getenv('SONIC_HUNTING_API','threat_hunt_agents_api-sonic_ai-1:3333') + "/api/answer_v2/"
         headers = {
           'Content-Type': 'application/json',
-          'Authorization': 'Token 42af1c549bd22daaa542ef9436903260b472c370'
+          'Authorization': f'Token {os.getenv('SONIC_HUNTING_KEY', "42af1c549bd22daaa542ef9436903260b472c370")}'
         }
         body = { "query": input }
       
